@@ -1,0 +1,11 @@
+@import "common/variables";
+@import "common/mixins";
+
+@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+
+@import "layouts/globals";
+
+@import "partials/header";
+@import "partials/footer";
+
+@import "pages/home";

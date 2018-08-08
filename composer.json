@@ -1,0 +1,27 @@
+{
+  "name": "inxait/frontstarter",
+  "description": "Frontend scaffold Inxait",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Alejandro Gutiérrez",
+      "email": "alejandro.gutierrez@inxaitcorp.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.0.0",
+    "illuminate/support": "5.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Inxait\\Frontstarter\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Inxait\\Frontstarter\\FrontServiceProvider"
+      ]
+    }
+  }
+}

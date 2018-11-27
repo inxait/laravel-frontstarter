@@ -6,7 +6,7 @@ use Illuminate\Support\ServiceProvider;
 
 class FrontServiceProvider extends ServiceProvider
 {
-	public function boot()
+    public function boot()
     {
         if (!file_exists(resource_path('.frontstarter'))) {
             //package.json
@@ -16,19 +16,27 @@ class FrontServiceProvider extends ServiceProvider
 
             $this->publishes([__DIR__.'/../stubs/package.json' => base_path('package.json')]);
 
-            //js
-            if (file_exists(resource_path('assets/js'))) {
-                $this->removeDirectory(resource_path('assets/js'));
+            if (strrpos(app()->version(), '5.7') != -1) {
+                $jsPath = 'js';
+                $sassPath = 'sass';
+            } else {
+                $jsPath = 'assets/js';
+                $sassPath = 'assets/sass';
             }
 
-            $this->publishes([__DIR__.'/../stubs/assets/js' => resource_path('assets/js')]);
+            //js
+            if (file_exists(resource_path($jsPath))) {
+                $this->removeDirectory(resource_path($jsPath));
+            }
+
+            $this->publishes([__DIR__.'/../stubs/assets/js' => resource_path($jsPath)]);
 
             //sass
-            if (file_exists(resource_path('assets/sass'))) {
-                $this->removeDirectory(resource_path('assets/sass'));
+            if (file_exists(resource_path($sassPath))) {
+                $this->removeDirectory(resource_path($sassPath));
             }
 
-            $this->publishes([__DIR__.'/../stubs/assets/sass' => resource_path('assets/sass')]);
+            $this->publishes([__DIR__.'/../stubs/assets/sass' => resource_path($sassPath)]);
 
             //views
             if (file_exists(resource_path('views'))) {
